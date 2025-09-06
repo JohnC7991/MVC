@@ -4,7 +4,7 @@ class Usuario{
     public $nombre;
     public $apellidos;
     public $email;
-    public $password
+    public $password;
 
     function getNombre(){
         return $this->nombre;
@@ -30,6 +30,11 @@ class Usuario{
     }
     function setPassword(){
         $this->password=$password;
+        
     }
+    //metdo consulta BD 
+        public function conseguirTodos(){
+            echo "imprimiendo todos los usurios";    
+        }
 }
 

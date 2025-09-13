@@ -2,13 +2,16 @@
 
 <?php
 
-require_once 'controllers/UsuarioController.php';
-
+//require_once 'controllers/UsuarioController.php';
+//require_once 'controllers/ProductoController.php';
+require_once 'autoload.php';
 $controlador=new UsuarioController;
 
 //$controlador -> mostrarTodos();
 
 //$controlador -> crear(); 
+
+
 
 $nombre_controlador = $_GET['controller'];
 
@@ -25,5 +28,5 @@ if(isset($nombre_controlador) && class_exists($nombre_controlador)){
 
 }else {
             echo "La pagina que buscas no existe";
-        }
+}
 

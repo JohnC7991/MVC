@@ -1,10 +1,20 @@
 <?php
 
+require_once 'config/database.php';
+
 class Usuario{
     public $nombre;
     public $apellidos;
     public $email;
     public $password;
+
+    private $db;
+
+public function __construct()
+{
+	$this->db=database::conectar():
+}
+
 
     function getNombre(){
         return $this->nombre;

@@ -3,6 +3,8 @@
 require_once 'config/database.php';
 
 class Usuario{
+
+    public $id_usuario;
     public $nombre;
     public $apellidos;
     public $email;
@@ -12,10 +14,13 @@ class Usuario{
 
 public function __construct()
 {
-	$this->db=database::conectar():
+	$this->db=database::conectar();
 }
 
 
+    function getId_usuario(){
+        return $this->id_usuario;
+    }
     function getNombre(){
         return $this->nombre;
     }
@@ -29,22 +34,39 @@ public function __construct()
         return $this->password;
     }
 
-    function setNombre(){
+    function setId_usuario($id_usuario){
+        $this->id_usuario=$id_usuario;
+    }
+
+    function setNombre($nombre){
         $this->nombre=$nombre;
     }
-    function setApellidos(){
+    function setApellidos($apellidos){
         $this->apellidos=$apellidos;
     }
-    function setEmail(){
+    function setEmail($email){
         $this->email=$email;
     }
-    function setPassword(){
+    function setPassword($password){
         $this->password=$password;
         
     }
     //metdo consulta BD 
         public function conseguirTodos(){
-            echo "imprimiendo todos los usurios";    
+            //var_dump($this->db);
+            $query = $this->db->query("SELECT * FROM t_usuarios");
+            return $query;
+
+            echo "imprimiendo todos los usuarios";    
+        }
+
+        public function crear(){
+            //var_dump(sql);
+            $sql= "INSERT INTO t_usuarios 
+            (id_usuario,nombre,apellidos,email,password) VALUES ({$this->id_usuario},'{$this->nombre}','{$this->apellidos}','{$this->email}','{$this->password}');";
+            
+            $guardar = $this->db->query($sql);
+            return $guardar;
         }
 }
 
